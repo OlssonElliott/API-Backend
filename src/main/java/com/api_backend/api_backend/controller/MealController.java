@@ -5,9 +5,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api_backend.api_backend.model.Meal;
 import com.api_backend.api_backend.service.MealService;
 
+import java.util.Optional;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class MealController {
@@ -19,12 +23,25 @@ public class MealController {
     }
 
     @GetMapping("/meals")
-    public void showMeals() {
+    public Iterable<Meal> showAllMeals() {
+        return mealService.showAllMeals();
+    }
+
+    @GetMapping("/find-meal")
+    public Optional<Meal> findMeal(@RequestParam int id) {
+        return mealService.findMeal(id);
     }
 
     @PostMapping("/add-meal")
-    public void addMeal(@RequestBody Meal meal) {
-        mealService.addMeal();
+    public String addMeal(@RequestBody Meal meal) {
+        mealService.addMeal(meal);
+        return "Meal med id: " + meal.getId() + " added";
+    }
+
+    @DeleteMapping("/delete-meal")
+    public String deleteMeal(@RequestParam Integer id) {
+        mealService.deleteMeal(id);
+        return "Meal med id: " + id + " borttagen";
     }
 
 }
