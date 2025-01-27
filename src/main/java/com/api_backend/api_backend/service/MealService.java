@@ -34,4 +34,16 @@ public class MealService {
         return meal;
     }
 
+    public boolean setFavorite(Integer id) {
+        Optional<Meal> optMeal = mealRepository.findById(id);
+        Meal meal = optMeal.get();
+        if (meal.isFavorite() == true) {
+            meal.setFavorite(false);
+        } else {
+            meal.setFavorite(true);
+        }
+        mealRepository.save(meal);
+        return meal.isFavorite();
+    }
+
 }
