@@ -10,15 +10,25 @@ public class Meal {
     private int id; // alla objekt har redan ett id, behöver inte generera unika id:n
     private String source;
     private String comment;
+    private boolean favorite;
 
-    public Meal(int id, String source, String comment) {
+    public Meal(int id, String source, String comment, boolean favorite) {
         this.id = id;
         this.source = source;
         this.comment = comment;
+        this.favorite = favorite;
     }
 
     public Meal() {
 
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 
     public int getId() {

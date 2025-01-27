@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 public class MealController {
@@ -42,6 +44,16 @@ public class MealController {
     public String deleteMeal(@RequestParam Integer id) {
         mealService.deleteMeal(id);
         return "Meal med id: " + id + " borttagen";
+    }
+
+    @PutMapping("/favorite")
+    public String setFavorite(@RequestParam Integer id) {
+        boolean svar = mealService.setFavorite(id);
+        if (svar == true) {
+            return "meal id: " + id + " is a favorite!";
+        } else {
+            return "meal id: " + id + " is not a favorite";
+        }
     }
 
 }
