@@ -11,6 +11,16 @@ public class Meal {
     private String source;
     private String comment;
 
+    public Meal(int id, String source, String comment) {
+        this.id = id;
+        this.source = source;
+        this.comment = comment;
+    }
+
+    public Meal() {
+
+    }
+
     public int getId() {
         return id;
     }
