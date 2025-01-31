@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
-
 // Fick använda @CrossOrigin för kunde inte nå 8080 pga CORS i frontend, källa:
 // https://spring.io/guides/gs/rest-service-cors
 @CrossOrigin(origins = "http://localhost:8081")
