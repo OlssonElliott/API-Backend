@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
-/*
- * för att kunna nå localhost:8080 från 8081 fick jag googla lite, länk:
- * https://spring.io/guides/gs/rest-service-cors
- */
+// Fick använda @CrossOrigin för kunde inte nå 8080 pga CORS i frontend, källa:
+// https://spring.io/guides/gs/rest-service-cors
 @CrossOrigin(origins = "http://localhost:8081")
 public class MealController {
 
@@ -35,7 +33,7 @@ public class MealController {
     }
 
     @GetMapping("/find-meal")
-    public Optional<Meal> findMeal(@RequestParam int id) {
+    public Optional<Meal> findMeal(@RequestParam Integer id) {
         return mealService.findMeal(id);
     }
 
@@ -59,6 +57,11 @@ public class MealController {
         } else {
             return "meal id: " + id + " is not a favorite";
         }
+    }
+
+    @PutMapping("/comment")
+    public String setComment(@RequestParam Integer id, @RequestParam String comment) {
+        return mealService.setComment(id, comment);
     }
 
 }

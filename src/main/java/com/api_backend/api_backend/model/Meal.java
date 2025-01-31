@@ -7,12 +7,12 @@ import jakarta.persistence.Id;
 public class Meal {
 
     @Id
-    private int id; // alla objekt har redan ett id, behöver inte generera unika id:n
+    private Integer id; // alla objekt har redan ett id, behöver inte generera unika id:n
     private String source;
     private String comment;
     private boolean favorite;
 
-    public Meal(int id, String source, String comment, boolean favorite) {
+    public Meal(Integer id, String source, String comment, boolean favorite) {
         this.id = id;
         this.source = source;
         this.comment = comment;
@@ -35,7 +35,7 @@ public class Meal {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

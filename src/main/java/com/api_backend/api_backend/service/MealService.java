@@ -46,4 +46,12 @@ public class MealService {
         return meal.isFavorite();
     }
 
+    public String setComment(Integer id, String comment) {
+        Optional<Meal> optMeal = mealRepository.findById(id);
+        Meal meal = optMeal.get();
+        meal.setComment(comment);
+        mealRepository.save(meal);
+        return "Comment added to meal id: " + id;
+    }
+
 }
