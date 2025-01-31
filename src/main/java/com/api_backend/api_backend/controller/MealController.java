@@ -34,7 +34,7 @@ public class MealController {
     }
 
     @GetMapping("/find-meal")
-    public Optional<Meal> findMeal(@RequestParam int id) {
+    public Optional<Meal> findMeal(@RequestParam Integer id) {
         return mealService.findMeal(id);
     }
 
